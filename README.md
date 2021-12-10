@@ -32,5 +32,4 @@ Event 객체가 만들어지는지 Test 객체 만들어보기
 post 요청으로 /api/events 를 요청했을 때 201 응답을  
   받는 Test 객체를 만들어보세요 
 
-힌트 : @Runwith , @WebMvcTest, mockMvc
-
+힌트 : @ExtendWith , @WebMvcTest, mockMvc
