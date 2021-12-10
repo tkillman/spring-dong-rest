@@ -9,7 +9,6 @@ public class EventTest {
 	@Test
 	public void builder() {
 		Event event = Event.builder().build();
-		
 		assertThat(event).isNotNull();
 	}
 }

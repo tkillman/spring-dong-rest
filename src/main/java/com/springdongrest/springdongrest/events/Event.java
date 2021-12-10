@@ -9,9 +9,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
+
 @Builder @AllArgsConstructor @NoArgsConstructor
 @Getter @Setter @EqualsAndHashCode(of = "id")
+@Entity
 public class Event {
+
+	@Id @GeneratedValue
 	private String name; 
 	private String description; 
 	private LocalDateTime beginEnrollmentDateTime; 
@@ -24,6 +29,8 @@ public class Event {
 	private int limitOfEnrollment; 
 	private Integer id; 
 	private boolean offline; 
-	private boolean free; 
+	private boolean free;
+
+	@Enumerated(EnumType.STRING)
 	private EventStatus eventStatus = EventStatus.DRAFT; 
 }
