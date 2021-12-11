@@ -33,3 +33,7 @@ post 요청으로 /api/events 를 요청했을 때 201 응답을
   받는 Test 객체를 만들어보세요 
 
 힌트 : @ExtendWith , @WebMvcTest, mockMvc
+
+# 5. event를 통과 할 수 있게 EventController를 만들어보세요
+
+힌트 : @Controller, @Postmapping, WebMvcLinkBuilder
