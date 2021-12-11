@@ -62,5 +62,28 @@ Test 작성하기
 응답받은 Event 객체에 id 임의의 값을 설정하여 리턴하기
 힌트 : @RequestBody
 
+# 9. 입력받을 값 제한하기
+1. Jpa 만들어보기 (EventRepository)  
+힌트 : JpaRepository
 
+2. (Skip 가능) Jpa를 사용하기 위해 test annotation @WebMvcTest -> @SpringBootTest 변경,
+@AutoConfigureMockMvc 추가하기
+팁 : jpa 객체가 @WebMvcTest에서는 만들어지질 않는다.
+skip : test에서 jpa를 사용하지 않으면 구지 바꿀 필요는 없다.
 
+3. EventControllerTest에서 Event의 free에 true를 보내더라도 응답은 true가 아닌 테스트 작성.
+
+4. EventController postmapping의 event에서 입력받을 값만 dto 객체를 새로 만들기
+5. event는 jpa entity로 사용하도록 변경  
+힌트 : @Entity
+
+6. 입력받은 dto를 event 객체로 변환하기  
+힌트 : modelMapper  
+팁 : modelMapper 설정은
+  <br/>a) pom.xml 추가, b) main 메소드에 정의하기 @Bean
+
+7. event 객체를 jpa를 통해 저장하고 리턴하기
+
+8. test를 통과하는지 확인하기
+
+# 10. 
