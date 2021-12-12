@@ -86,4 +86,16 @@ skip : test에서 jpa를 사용하지 않으면 구지 바꿀 필요는 없다.
 
 8. test를 통과하는지 확인하기
 
-# 10. 
+# 10. 입력받은 값 검증하기
+1. name값을 넘기지 않는 경우 badRequest 응답을 받는 테스트를 작성해보자
+2. 테스트를 통과하도록 소스를 수정해보자 
+ - pom.xml에 sping-valdation 추가
+ - EventDto에 name이 empty 할 수 없다는 annotation을 설정해보자
+ - Controller의 param에 valid 설정 @Valid
+ - errors.hasError() 로 BadRequest 응답을 보내보자.
+
+# 11. custom validator
+1. EventValidator의 valid 메소드를 사용하여 LocalDateTime 타입 이벤트 시작일시가 LocalDateTime 타입 이벤트 종료일시보다 뒤면 에러가 나오도록 
+테스트 케이스를 작성해보자.
+
+# 12. custom annotation으로 테스트케이스에 설명을 붙여보자
