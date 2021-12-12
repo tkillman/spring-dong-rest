@@ -110,3 +110,9 @@ errors 객체에 대한 serialize가 필요하다.
 테스트 작성
  - 응답받은 json objectName, field, defaultMessage, code, rejectValue가 포함되어 있는지 작성
 힌트 : @JsonComponent, JsonSerializer
+
+# 14. 비즈니스 로직 적용
+EventTest 에서 location이 있으면 offline true 없으면 false인
+케이스를 작성해보자.   
+
+힌트 : Event 객체에 update 메소드 추가

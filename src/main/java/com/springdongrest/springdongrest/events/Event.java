@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
 
@@ -34,5 +35,12 @@ public class Event {
 	private boolean free = false;
 
 	@Enumerated(EnumType.STRING)
-	private EventStatus eventStatus = EventStatus.DRAFT; 
+	private EventStatus eventStatus = EventStatus.DRAFT;
+
+	public Event update() {
+		if (StringUtils.hasLength(location)) {
+			this.offline = true;
+		}
+		return this;
+	}
 }
