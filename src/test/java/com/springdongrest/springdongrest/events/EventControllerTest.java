@@ -93,4 +93,27 @@ public class EventControllerTest {
                 )
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
+
+    @Test
+    @TestDescription("잘못된 input의 에러확인")
+    public void createEvent_bad_req_wrong_input() throws  Exception {
+        EventDto eventDto = EventDto.builder()
+                .name("이벤트")
+                .beginEventDateTime(LocalDateTime.of(2021, 12,12,12,12))
+                .endEventDateTime(LocalDateTime.of(2021, 12,11,12,12))
+                .build();
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/events")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaTypes.HAL_JSON)
+                        .content(objectMapper.writeValueAsString(eventDto))
+                )
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].objectName").exists())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].field").exists())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].defaultMessage").exists())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].code").exists())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].rejectedValue").exists());
+    }
 }

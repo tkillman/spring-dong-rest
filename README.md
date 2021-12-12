@@ -99,3 +99,14 @@ skip : test에서 jpa를 사용하지 않으면 구지 바꿀 필요는 없다.
 테스트 케이스를 작성해보자.
 
 # 12. custom annotation으로 테스트케이스에 설명을 붙여보자
+
+# 13. validator에 의한 에러를 응답으로 보내보자.
+Errors 객체를 responseEntity에 body로 내보내면 에러를 발생한다.  
+이유는 errors 객체가 bean spec을 준수하지 않았기 때문에 object에서
+json 형태로 변환 시 serialize가 되지 않기 때문이다. 그렇기 때문에
+errors 객체에 대한 serialize가 필요하다.  
+미션 : errors객체를 serialize해서 응답으로 에러내용을 받도록 해보자.  
+
+테스트 작성
+ - 응답받은 json objectName, field, defaultMessage, code, rejectValue가 포함되어 있는지 작성
+힌트 : @JsonComponent, JsonSerializer
