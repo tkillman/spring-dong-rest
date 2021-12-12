@@ -116,3 +116,7 @@ EventTest 에서 location이 있으면 offline true 없으면 false인
 케이스를 작성해보자.   
 
 힌트 : Event 객체에 update 메소드 추가
+
+# 15. 위의 14번 테스트를 junitParams를 사용하여 간결화해보자
+pom.xml 
+

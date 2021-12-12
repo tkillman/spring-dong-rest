@@ -40,6 +40,8 @@ public class Event {
 	public Event update() {
 		if (StringUtils.hasLength(location)) {
 			this.offline = true;
+		} else {
+			this.offline = false;
 		}
 		return this;
 	}
