@@ -50,18 +50,22 @@ public class EventControllerTest {
 //
         EventDto eventDto = EventDto.builder()
                                         .name("이벤트")
-                .beginEventDateTime(LocalDateTime.of(2021, 12,12,12,12))
-                .endEventDateTime(LocalDateTime.of(2021, 12,13,12,12))
-                .build();
+                                        .beginEventDateTime(LocalDateTime.of(2021, 12,12,12,12))
+                                        .endEventDateTime(LocalDateTime.of(2021, 12,13,12,12))
+                                        .build();
 
         mockMvc.perform(MockMvcRequestBuilders.post("/api/events")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaTypes.HAL_JSON)
                 .content(objectMapper.writeValueAsString(eventDto))
         )
-        .andDo(MockMvcResultHandlers.print())
-        .andExpect(MockMvcResultMatchers.status().isCreated())
-        .andExpect(MockMvcResultMatchers.jsonPath("id").exists());
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isCreated())
+                .andExpect(MockMvcResultMatchers.jsonPath("id").exists())
+                .andExpect(MockMvcResultMatchers.jsonPath("_links.self").exists())
+                .andExpect(MockMvcResultMatchers.jsonPath("_links.query-event").exists())
+                .andExpect(MockMvcResultMatchers.jsonPath("_links.update-event").exists())
+        ;
     }
 
     @Test

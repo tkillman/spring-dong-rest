@@ -2,7 +2,9 @@ package com.springdongrest.springdongrest.events;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.MediaTypes;
+import org.springframework.hateoas.server.LinkBuilder;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -64,8 +66,14 @@ public class EventController {
         Event event = modelMapper.map(eventDto, Event.class);
         Event newEvent = eventRepository.save(event);
 
-        URI uri = WebMvcLinkBuilder.linkTo(EventController.class).slash(newEvent.getId()).toUri();
+        LinkBuilder lb = WebMvcLinkBuilder.linkTo(EventController.class).slash(newEvent.getId());
+        URI uri = lb.toUri();
 
-        return ResponseEntity.created(uri).body(newEvent);
+
+        EventResource er = new EventResource(newEvent);
+        er.add(WebMvcLinkBuilder.linkTo(EventController.class).withRel("query-event"));
+        er.add(lb.withRel("update-event"));
+
+        return ResponseEntity.created(uri).body(er);
     }
 }
