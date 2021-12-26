@@ -161,6 +161,12 @@ test에 common pakage를 생성하고, RestDocConfiguration class를 만든 뒤 
 추가 팁 : PayloadDocumentation.relaxedResponseFields, relaxed prefix가 붙으면
 모두 열거할 필요는 없어진다.
 
+# 24. RestDoc
+url로 ascdoc 확인하기  
+힌트 : pom.xml에 추가  
+첫 번째는 asciidoc에 있는 파일의 index.adoc을 generate-docs index.html로 만드는단계  
+두 번째는 해당 index.html을 target/static/docs/index.html로 복사하는 단계
+
 
 
 
