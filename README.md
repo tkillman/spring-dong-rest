@@ -146,5 +146,16 @@ test에 common pakage를 생성하고, RestDocConfiguration class를 만든 뒤 
 힌트 : HypermediaDocumentation.links, HypermediaDocumentation.linkWithRel  
 확인 : links.adoc 확인
 
+# 21. RestDoc header 정보 알려주기
+위의 document에 header 정보 알려주기  
+힌트 : HeaderDocumentation.requestHeaders, HeaderDocumentation.headerWithName
+확인 : request-headers.adoc 확인
+
+# 22. RestDoc requestFields 정보 알려주기
+위의 document에 requestFields 정보 알려주기 
+힌트 : PayloadDocumentation.requestFields, PayloadDocumentation.fieldWithPath
+
+
+
 
 

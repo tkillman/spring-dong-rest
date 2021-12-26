@@ -14,9 +14,12 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.hateoas.MediaTypes;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.restdocs.headers.HeaderDocumentation;
 import org.springframework.restdocs.hypermedia.HypermediaDocumentation;
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation;
+import org.springframework.restdocs.payload.PayloadDocumentation;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -77,7 +80,23 @@ public class EventControllerTest {
                             HypermediaDocumentation.links(
                                     HypermediaDocumentation.linkWithRel("self").description("link to self"),
                                     HypermediaDocumentation.linkWithRel("update-event").description("update event"),
-                                    HypermediaDocumentation.linkWithRel("query-event").description("query-event"))
+                                    HypermediaDocumentation.linkWithRel("query-event").description("query-event")),
+                            HeaderDocumentation.requestHeaders(
+                                    HeaderDocumentation.headerWithName(HttpHeaders.ACCEPT).description("accept header"),
+                                    HeaderDocumentation.headerWithName(HttpHeaders.CONTENT_TYPE).description("accept CONTENT_TYPE")
+                            ),
+                            PayloadDocumentation.requestFields(
+                                    PayloadDocumentation.fieldWithPath("name").description("name of event"),
+                                    PayloadDocumentation.fieldWithPath("description").description("name of description"),
+                                    PayloadDocumentation.fieldWithPath("beginEnrollmentDateTime").description("name of beginEnrollmentDateTime"),
+                                    PayloadDocumentation.fieldWithPath("closeEnrollmentDateTime").description("name of closeEnrollmentDateTime"),
+                                    PayloadDocumentation.fieldWithPath("beginEventDateTime").description("name of beginEventDateTime"),
+                                    PayloadDocumentation.fieldWithPath("endEventDateTime").description("name of endEventDateTime"),
+                                    PayloadDocumentation.fieldWithPath("location").description("name of location"),
+                                    PayloadDocumentation.fieldWithPath("basePrice").description("name of basePrice"),
+                                    PayloadDocumentation.fieldWithPath("maxPrice").description("name of maxPrice"),
+                                    PayloadDocumentation.fieldWithPath("limitOfEnrollment").description("name of limitOfEnrollment")
+                            )
                         )
                 )
         ;
