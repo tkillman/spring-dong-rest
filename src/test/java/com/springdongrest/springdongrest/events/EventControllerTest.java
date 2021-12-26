@@ -96,6 +96,29 @@ public class EventControllerTest {
                                     PayloadDocumentation.fieldWithPath("basePrice").description("name of basePrice"),
                                     PayloadDocumentation.fieldWithPath("maxPrice").description("name of maxPrice"),
                                     PayloadDocumentation.fieldWithPath("limitOfEnrollment").description("name of limitOfEnrollment")
+                            ),
+                            HeaderDocumentation.responseHeaders(
+                                    HeaderDocumentation.headerWithName(HttpHeaders.LOCATION).description("accept LOCATION"),
+                                    HeaderDocumentation.headerWithName(HttpHeaders.CONTENT_TYPE).description("accept CONTENT_TYPE")
+                            ),
+                            PayloadDocumentation.relaxedResponseFields(
+                                    PayloadDocumentation.fieldWithPath("id").description("name of id"),
+                                    PayloadDocumentation.fieldWithPath("offline").description("name of offline"),
+                                    PayloadDocumentation.fieldWithPath("free").description("name of free"),
+                                    PayloadDocumentation.fieldWithPath("eventStatus").description("name of eventStatus"),
+                                    PayloadDocumentation.fieldWithPath("name").description("name of event"),
+                                    PayloadDocumentation.fieldWithPath("description").description("name of description"),
+                                    PayloadDocumentation.fieldWithPath("beginEnrollmentDateTime").description("name of beginEnrollmentDateTime"),
+                                    PayloadDocumentation.fieldWithPath("closeEnrollmentDateTime").description("name of closeEnrollmentDateTime"),
+                                    PayloadDocumentation.fieldWithPath("beginEventDateTime").description("name of beginEventDateTime"),
+                                    PayloadDocumentation.fieldWithPath("endEventDateTime").description("name of endEventDateTime"),
+                                    PayloadDocumentation.fieldWithPath("location").description("name of location"),
+                                    PayloadDocumentation.fieldWithPath("basePrice").description("name of basePrice"),
+                                    PayloadDocumentation.fieldWithPath("maxPrice").description("name of maxPrice"),
+                                    PayloadDocumentation.fieldWithPath("limitOfEnrollment").description("name of limitOfEnrollment"),
+                                    PayloadDocumentation.fieldWithPath("_links.self.href").description("name of _links.self.href"),
+                                    PayloadDocumentation.fieldWithPath("_links.query-event.href").description("name of _links.query-event.href"),
+                                    PayloadDocumentation.fieldWithPath("_links.update-event.href").description("name of _links.update-event.href")
                             )
                         )
                 )

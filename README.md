@@ -155,6 +155,13 @@ test에 common pakage를 생성하고, RestDocConfiguration class를 만든 뒤 
 위의 document에 requestFields 정보 알려주기 
 힌트 : PayloadDocumentation.requestFields, PayloadDocumentation.fieldWithPath
 
+# 23. RestDoc responseHeaders, responseFields 정보 알려주기
+힌트 : HeaderDocumentation.responseHeaders,HeaderDocumentation.headerWithName
+, PayloadDocumentation.responseFields  
+추가 팁 : PayloadDocumentation.relaxedResponseFields, relaxed prefix가 붙으면
+모두 열거할 필요는 없어진다.
+
+
 
 
 
