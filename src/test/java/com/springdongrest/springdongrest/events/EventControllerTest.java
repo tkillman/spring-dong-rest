@@ -2,6 +2,7 @@ package com.springdongrest.springdongrest.events;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.springdongrest.springdongrest.common.RestDocConfiguration;
 import com.springdongrest.springdongrest.common.TestDescription;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
@@ -11,8 +12,11 @@ import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDoc
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.MediaType;
+import org.springframework.restdocs.hypermedia.HypermediaDocumentation;
+import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -25,6 +29,7 @@ import java.time.LocalDateTime;
 @SpringBootTest
 @AutoConfigureMockMvc
 @AutoConfigureRestDocs
+@Import(RestDocConfiguration.class)
 public class EventControllerTest {
 
     @Autowired
@@ -67,6 +72,14 @@ public class EventControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("_links.self").exists())
                 .andExpect(MockMvcResultMatchers.jsonPath("_links.query-event").exists())
                 .andExpect(MockMvcResultMatchers.jsonPath("_links.update-event").exists())
+                .andDo(MockMvcRestDocumentation
+                        .document("create-event",
+                            HypermediaDocumentation.links(
+                                    HypermediaDocumentation.linkWithRel("self").description("link to self"),
+                                    HypermediaDocumentation.linkWithRel("update-event").description("update event"),
+                                    HypermediaDocumentation.linkWithRel("query-event").description("query-event"))
+                        )
+                )
         ;
     }
 

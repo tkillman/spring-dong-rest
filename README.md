@@ -131,5 +131,20 @@ pom.xml junit-jupiter-params 추가
 EventControllerTest에 RestDoc을 적용하기 위한 어노테이션을 붙여보기  
 힌트 : @AutoConfigureRestDocs
 
+# 18. RestDoc create-event 만들어보기
+EventControllerTest에 createEvent 메소드에 create-event라는 문서 만들어보기  
+힌트 : MockMvcRestDocumentation.document  
+확인 : target폴더 generated-snippets
+
+# 19. RestDoc 문서 예쁘게 출력하기
+test에 common pakage를 생성하고, RestDocConfiguration class를 만든 뒤 RestDocsMockMvcConfigurationCustomizer Bean을 등록해보세요.  
+힌트 : @TestConfiguration, RestDocsMockMvcConfigurationCustomizer
+, @Import(RestDocConfiguration.class)
+
+# 20. RestDoc link 정보 알려주기
+위에서 만든 document메소드 다음 snippets를 추가해보자
+힌트 : HypermediaDocumentation.links, HypermediaDocumentation.linkWithRel  
+확인 : links.adoc 확인
+
 
 
