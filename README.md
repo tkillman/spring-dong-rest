@@ -124,9 +124,12 @@ pom.xml junit-jupiter-params 추가
 
 # 16. Hateoas 적용
 - EventControllerTest에서 _link.self, _link.query-event , _link.update-event 가 있는지 확인하는 테스트 케이스를 작성해보자.
-- EventResource 클래스를 만들고 RepresentationModel을 상속받아 test를 통과하도록
-add 하여 hateoas에 테스트를 통과해보세요.
 힌트 : @JsonUnwrapped // serialize할 때 json을 객체 이름으로 감싸지 않도록 하는 어노테이션
 - @JsonUnwrapped를 매번 사용해야 하는 과정을 피하기 위해 EntityModel을 상속받도록 소스를 수정해보세요.
+
+# 17. RestDoc 적용하기
+EventControllerTest에 RestDoc을 적용하기 위한 어노테이션을 붙여보기  
+힌트 : @AutoConfigureRestDocs
+
 
 
